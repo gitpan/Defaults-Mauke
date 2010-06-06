@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Defaults-Mauke
-version:            0.05
+version:            0.06
 abstract:           load a few generally useful modules to save typing
 author:
     - Lukas Mai <l.mai@web.de>
