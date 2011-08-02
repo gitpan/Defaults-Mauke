@@ -1,27 +1,26 @@
---- #YAML:1.0
-name:               Defaults-Mauke
-version:            0.06
-abstract:           load a few generally useful modules to save typing
+---
+abstract: 'load a few generally useful modules to save typing'
 author:
-    - Lukas Mai <l.mai@web.de>
-license:            unrestricted
-distribution_type:  module
-configure_requires:
-    ExtUtils::MakeMaker:  0
+  - 'Lukas Mai <l.mai@web.de>'
 build_requires:
-    ExtUtils::MakeMaker:  0
-requires:
-    Function::Parameters:  0.04
-    indirect:             0
-    strict:               0
-    Test::More:           0
-    utf8:                 0
-    warnings:             0
-no_index:
-    directory:
-        - t
-        - inc
-generated_by:       ExtUtils::MakeMaker version 6.56
+  Test::More: 0
+configure_requires:
+  ExtUtils::MakeMaker: 0
+dynamic_config: 1
+generated_by: 'ExtUtils::MakeMaker version 6.58, CPAN::Meta::Converter version 2.110930001'
+license: unrestricted
 meta-spec:
-    url:      http://module-build.sourceforge.net/META-spec-v1.4.html
-    version:  1.4
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Defaults-Mauke
+no_index:
+  directory:
+    - t
+    - inc
+requires:
+  Function::Parameters: 0.04
+  indirect: 0
+  strict: 0
+  utf8: 0
+  warnings: 0
+version: 0.07
