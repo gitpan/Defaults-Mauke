@@ -4,42 +4,34 @@ use warnings;
 use strict;
 use utf8;
 
-no indirect;  # beware bugs/segfaults
-use Function::Parameters ();  # suckage hopefully fixed
+no bareword::filehandles;
+no indirect 0.16;
+use Function::Parameters 0.06 ();  # require the lexical pragma version
 
-*VERSION = \'0.071';
+use Carp qw(croak);
 
-sub _croak {
-	require Carp;
-	{
-		no warnings qw(redefine);
-		*_croak = \&Carp::croak;
-	}
-	goto &_croak;
-}
-
-sub _indir {
-	my ($obj, $meth) = @_;
-	_croak qq{Indirect call of method "$meth" on object "$obj"};
-}
+*VERSION = \'0.08';
 
 sub import {
 	my ($class, @args) = @_;
 	my $caller = caller;
 	
-	_croak qq{"$_" is not exported by the $class module} for @args;
+	croak qq{"$_" is not exported by the $class module} for @args;
 	
 	strict->import;
 	warnings->import;
 	warnings->unimport(qw[recursion qw]);
 	utf8->import;
-	indirect->unimport(hook => \&_indir);
-	Function::Parameters::import_into $caller;
+	bareword::filehandles->unimport;
+	indirect->unimport(':fatal');
+	Function::Parameters->import;
 }
 
 1
 
 __END__
+
+=encoding UTF-8
 
 =head1 NAME
 
@@ -51,10 +43,10 @@ Defaults::Mauke - load a few generally useful modules to save typing
  
  ## equivalent to
  # use strict;
- # use warnings;
- # no warnings qw[recursion qw];
+ # use warnings; no warnings qw[recursion qw];
  # use utf8;
- # no indirect;
+ # no bareword::filehandles;
+ # no indirect qw(:fatal);
  # use Function::Parameters;
 
 =head1 DESCRIPTION
@@ -66,7 +58,8 @@ and adapt the source.
 
 =head1 SEE ALSO
 
-L<strict>, L<warnings>, L<utf8>, L<perllexwarn>, L<indirect>, L<Function::Parameters>.
+L<strict>, L<warnings>, L<utf8>, L<perllexwarn>, L<bareword::filehandles>,
+L<indirect>, L<Function::Parameters>.
 
 =head1 AUTHOR
 
