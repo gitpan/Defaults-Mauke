@@ -1,10 +1,10 @@
 {
-   "abstract" : "load a few generally useful modules to save typing",
+   "abstract" : "load mauke's favorite modules",
    "author" : [
       "Lukas Mai <l.mai@web.de>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "ExtUtils::MakeMaker version 6.6302, CPAN::Meta::Converter version 2.120921",
+   "generated_by" : "ExtUtils::MakeMaker version 7.02, CPAN::Meta::Converter version 2.143240",
    "license" : [
       "unrestricted"
    ],
@@ -21,26 +21,39 @@
    },
    "prereqs" : {
       "build" : {
-         "requires" : {
-            "Test::More" : "0"
-         }
+         "requires" : {}
       },
       "configure" : {
          "requires" : {
-            "ExtUtils::MakeMaker" : "0"
+            "ExtUtils::MakeMaker" : "6.48",
+            "strict" : "0",
+            "warnings" : "0"
          }
       },
       "runtime" : {
          "requires" : {
-            "Function::Parameters" : "0.06",
+            "Function::Parameters" : "1.06",
             "bareword::filehandles" : "0",
             "indirect" : "0.16",
+            "perl" : "5.016000",
             "strict" : "0",
             "utf8" : "0",
             "warnings" : "0"
          }
+      },
+      "test" : {
+         "requires" : {
+            "Test::More" : "0"
+         }
       }
    },
    "release_status" : "stable",
-   "version" : "0.09"
+   "resources" : {
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/mauke/Defaults-Mauke",
+         "web" : "https://github.com/mauke/Defaults-Mauke"
+      }
+   },
+   "version" : "0.10"
 }
